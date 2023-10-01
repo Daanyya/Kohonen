@@ -8,12 +8,9 @@
 <body>
   <canvas id="map"></canvas>
   <div id="menu">
-    <button id="teach-button" onclick="som.teach()">Teach</button>
-    <button id="teach-all-button">Teach all</button>
-    <button id="teach-0-button" onclick="som.renderForParam(0)">Temperature</button>
-    <button id="teach-1-button" onclick="som.renderForParam(1)">Humidity</button>
-    <button id="teach-2-button" onclick="som.renderForParam(2)">Wind</button>
-    <input type="text" id="custom-input" placeholder="your input...">
+    <button id="teach-button" onclick="som.teach()">Обучение</button>
+    <button id="teach-all-button">1 итерация обучения</button>
+    <input type="text" id="custom-input" placeholder="входное значение">
     <button id="find-winner-for-cusom-input">Show on map</button>
   </div>
   <script type="module" src="som.js"></script>
