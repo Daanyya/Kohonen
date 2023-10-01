@@ -1,7 +1,7 @@
 //Константы отображения карты
 const NUMBER_OF_INPUTS = 3;
-const NUMBER_OF_NEURONS_BY_WIDTH = 50;
-const NUMBER_OF_NEURONS_BY_HEIGHT = 50;
+const NUMBER_OF_NEURONS_BY_WIDTH = 40;
+const NUMBER_OF_NEURONS_BY_HEIGHT = 40;
 const NEURON_SIZE = 10;
 
 //Dataset
@@ -124,7 +124,7 @@ class SOM {
     //Индекс нейрона победителя
     return this.map[minDistanceIndex];
   }
-  /*
+  
   showNeuron(neuron, color) {
     context.fillStyle = color;
     context.fillRect(neuron.y_coordinate * NEURON_SIZE, neuron.x_coordinate * NEURON_SIZE, NEURON_SIZE, NEURON_SIZE);
@@ -134,7 +134,7 @@ class SOM {
     for (let i = 0; i < DATA_SET.length; i++) {
       this.showNeuron(this.findWinner(DATA_SET[i]), "red");
     }
-  }*/
+  }
   //Обучение 
   fullTeach() {
     while (DATA_SET.length > 0) {
