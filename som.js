@@ -41,15 +41,6 @@ document.querySelector('#teach-button').addEventListener('click', () => {
 document.querySelector('#teach-all-button').addEventListener('click', () => {
   som.fullTeach();
 });
-/*document.querySelector('#teach-0-button').addEventListener('click', () => {
-  som.renderForParam(0);
-});
-document.querySelector('#teach-1-button').addEventListener('click', () => {
-  som.renderForParam(1);
-});
-document.querySelector('#teach-2-button').addEventListener('click', () => {
-  som.renderForParam(2);
-});*/
 document.querySelector('#find-winner-for-cusom-input').addEventListener('click', () => {
   let data = JSON.parse(document.querySelector('#custom-input').value.replace(/'/g, '"'));
   let winner = som.findWinner(data);
@@ -66,16 +57,6 @@ class Neuron {
     //Массив весов для каждого входного сигнала
     this.weights = Array.from({length: NUMBER_OF_INPUTS}, () => Math.random() * ((1 / Math.sqrt(NUMBER_OF_INPUTS)) + (1 / Math.sqrt(NUMBER_OF_INPUTS))) + (-(1 / Math.sqrt(NUMBER_OF_INPUTS))));
   }
-  //? function finding the average of all weight of neuron weights
-  //? use to color map in grayscale like rgb(average*255, average*255, average*255)
-  /*getAverageWeight() {
-    let averageWeight = 0;
-    for (let i = 0; i < this.weights.length; i++) {
-      averageWeight += this.weights[i];
-    }
-    // should add (1 / Math.sqrt(NUMBER_OF_INPUTS)) to make the range like 0..1 not like -(1 / Math.sqrt(NUMBER_OF_INPUTS))..(1 / Math.sqrt(NUMBER_OF_INPUTS)) 
-    return averageWeight / this.weights.length + (1 / Math.sqrt(NUMBER_OF_INPUTS));
-  }*/
 }
 
 //Класс карты
@@ -129,20 +110,15 @@ class SOM {
     context.fillStyle = color;
     context.fillRect(neuron.y_coordinate * NEURON_SIZE, neuron.x_coordinate * NEURON_SIZE, NEURON_SIZE, NEURON_SIZE);
   }
-  //? function displaying win neurons for all rows of the dataset on map at the same time
-  showAllWinners() {
-    for (let i = 0; i < DATA_SET.length; i++) {
-      this.showNeuron(this.findWinner(DATA_SET[i]), "red");
-    }
-  }
-  //Обучение 
+
+  //Обучение
   fullTeach() {
     while (DATA_SET.length > 0) {
       this.teach();
     }
     this.render();
   }
-  //Обучение
+  //Обучение в 1 итерацию
   teach() {
     //Пока в dataset ещё остались объекты
     if (DATA_SET.length > 0) {
@@ -183,16 +159,6 @@ class SOM {
       numberOfTrainingStep++;
     }
   }
-  /*? render grayscale map for each input parameter
-  renderForParam(p) {
-    context.clearRect(0,0,mapElement.width,mapElement.height);
-    // draw all neurons
-    for (let i = 0; i < this.map.length; i++) {
-      context.fillStyle = `rgb(${this.map[i].weights[p] * 255}, ${this.map[i].weights[p] * 255}, ${this.map[i].weights[p] * 255})`;
-      // x_coordinate = height, y_coordinate = width
-      context.fillRect(this.map[i].y_coordinate * NEURON_SIZE, this.map[i].x_coordinate * NEURON_SIZE, NEURON_SIZE, NEURON_SIZE);
-    }
-  }*/
 }
 
 let som = new SOM();
